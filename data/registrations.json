@@ -1,0 +1,32 @@
+[
+  {
+    "eventId": "0922f08f-0ebc-4081-8a10-5878fc2f36ae",
+    "registrationCode": "TYmd4daontLC9IDM",
+    "userData": {
+      "name": "宋文琱",
+      "idNumber": "A123456789",
+      "email": "j236985325@gmail.com",
+      "phone": "0931128891",
+      "birthdate": "1990-01-01",
+      "gender": "male",
+      "address": "台北市信義區信義路五段7號",
+      "agreeTerms": true
+    },
+    "registrationTime": "2025-07-15T10:06:18.726Z"
+  },
+  {
+    "eventId": "1752127854994",
+    "registrationCode": "TYmd4testcode123",
+    "userData": {
+      "name": "測試用戶",
+      "idNumber": "A123456789",
+      "email": "test@example.com",
+      "phone": "0912345678",
+      "birthdate": "1990-01-01",
+      "gender": "male",
+      "address": "台北市信義區信義路五段7號",
+      "agreeTerms": true
+    },
+    "registrationTime": "2025-07-15T10:10:46.239Z"
+  }
+]

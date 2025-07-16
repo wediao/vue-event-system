@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1752127854994",
+    "name": "測試更新活動",
+    "registrationStartTime": "2025-07-15T03:00:00.000Z",
+    "registrationEndTime": "2025-07-16T04:00:00.000Z",
+    "description": "這是一個測試更新的活動描述",
+    "capacity": 150,
+    "roundDuration": 300000,
+    "roundCapacity": 100,
+    "createdAt": "2025-07-14T09:00:00.000Z",
+    "updatedAt": "2025-07-15T03:29:13.523Z",
+    "status": "published"
+  },
+  {
+    "id": "0922f08f-0ebc-4081-8a10-5878fc2f36ae",
+    "name": " 把你阿嬤賣掉～中元節活動",
+    "description": "中元節活動特別活動，包含限量商品、好兄弟見面會等精彩活動！",
+    "capacity": 100,
+    "registrationStartTime": "2025-07-15T16:03",
+    "registrationEndTime": "2025-07-16T17:02",
+    "countdownType": "auto",
+    "countdownStartTime": null,
+    "createdAt": "2025-07-15T05:46:29.732Z",
+    "updatedAt": "2025-07-15T08:02:51.812Z",
+    "status": "draft"
+  }
+]
