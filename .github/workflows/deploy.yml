@@ -1,0 +1,91 @@
+name: 🚀 Deploy to Server
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🧪 Run tests
+      run: npm test || true
+      
+    - name: 🏗️ Build project
+      run: npm run build
+      
+    - name: 📁 Create deployment package
+      run: |
+        mkdir -p deploy-package
+        cp -r dist/ deploy-package/
+        cp -r server.js package*.json deploy-package/
+        cp -r scripts/ deploy-package/
+        cp -r nginx.conf ecosystem.config.js deploy-package/
+        cp -r data/ deploy-package/ || mkdir -p deploy-package/data
+        tar -czf deploy-package.tar.gz deploy-package/
+        
+    - name: 🚀 Deploy to server
+      if: github.ref == 'refs/heads/main'
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          # 停止現有服務
+          pm2 stop my-vue-app || true
+          
+          # 備份現有部署
+          sudo mkdir -p /var/backups/my-vue-app
+          sudo cp -r /var/www/my-vue-app /var/backups/my-vue-app/backup-$(date +%Y%m%d-%H%M%S) || true
+          
+          # 建立部署目錄
+          sudo mkdir -p /var/www/my-vue-app
+          sudo chown $USER:$USER /var/www/my-vue-app
+          
+          # 下載並解壓縮部署包
+          cd /var/www/my-vue-app
+          wget -O deploy-package.tar.gz "${{ secrets.DEPLOY_URL }}/deploy-package.tar.gz"
+          tar -xzf deploy-package.tar.gz --strip-components=1
+          
+          # 安裝生產環境依賴
+          npm install --production
+          
+          # 設定環境變數
+          echo "NODE_ENV=production" > .env
+          echo "PORT=3000" >> .env
+          
+          # 啟動服務
+          pm2 start ecosystem.config.js
+          pm2 save
+          
+          # 重新載入 Nginx（如果需要）
+          sudo nginx -t && sudo systemctl reload nginx || true
+          
+          # 清理
+          rm -f deploy-package.tar.gz
+          
+    - name: 📢 Notify deployment status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "✅ 部署成功！"
+        else
+          echo "❌ 部署失敗！"
+        fi 

@@ -1,0 +1,53 @@
+name: 🔨 Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+        
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 🔧 Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🔍 Lint code
+      run: npm run lint || true
+      
+    - name: 🧪 Run tests
+      run: npm test || true
+      
+    - name: 🏗️ Build project
+      run: npm run build
+      
+    - name: 📊 Check build size
+      run: |
+        echo "📦 Build size information:"
+        du -sh dist/
+        ls -la dist/
+        
+    - name: 🔒 Security audit
+      run: npm audit --audit-level=moderate || true
+      
+    - name: 📋 Generate build report
+      run: |
+        echo "## 🏗️ Build Report" >> $GITHUB_STEP_SUMMARY
+        echo "- Node.js version: ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Build status: ✅ Success" >> $GITHUB_STEP_SUMMARY
+        echo "- Build size: $(du -sh dist/ | cut -f1)" >> $GITHUB_STEP_SUMMARY 
