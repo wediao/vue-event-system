@@ -14,9 +14,11 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
-// 中間件設定
+// 修正 CORS 設定（移除重複行）
 app.use(cors({
-  origin: NODE_ENV === 'production' ? ['https://yourdomain.com'] : ['http://localhost:5173', 'http://localhost:5174'],
+  origin: NODE_ENV === 'production' 
+    ? ['https://vue-event-system.onrender.com'] 
+    : ['http://localhost:5173', 'http://localhost:5174'],
   credentials: true
 }))
 app.use(bodyParser.json())
@@ -1400,6 +1402,15 @@ process.on('SIGINT', () => {
 // SPA 路由處理 - 所有未匹配的路由都返回 index.html
 if (NODE_ENV === 'production') {
   app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+  })
+}
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+  })
+}
+  })
+}
     res.sendFile(path.join(__dirname, 'dist', 'index.html'))
   })
 }

@@ -1,7 +1,12 @@
 import axios from 'axios'
 
-// 設定基礎 URL - 用於管理員 API
-axios.defaults.baseURL = 'http://localhost:3000'
+// 動態設定基礎 URL
+const isProduction = import.meta.env.PROD
+const baseURL = isProduction 
+  ? 'https://vue-event-system.onrender.com'  // 生產環境
+  : 'http://localhost:3000'                   // 開發環境
+
+axios.defaults.baseURL = baseURL
 
 // 設定請求攔截器
 axios.interceptors.request.use(
