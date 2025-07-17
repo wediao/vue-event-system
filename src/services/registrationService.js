@@ -1,3 +1,4 @@
+import axios from './axiosConfig'
 
 const API_BASE_URL = '/api'  // 使用相對路徑，讓 axios 處理基礎 URL
 
@@ -36,10 +37,10 @@ export const registrationService = {
   async register(eventId, registrationCode, userData) {
     try {
       const response = await axios.post(`${API_BASE_URL}/register`, {
-      eventId,
-      registrationCode,
-      userData
-    })
+        eventId,
+        registrationCode,
+        userData
+      })
       return response.data
     } catch (error) {
       console.error('註冊失敗：', error)
@@ -80,10 +81,10 @@ export const registrationService = {
     try {
       const savedData = localStorage.getItem('registrationFormData')
       return savedData ? JSON.parse(savedData) : null
-  } catch (error) {
+    } catch (error) {
       console.error('載入表單資料失敗：', error)
       return null
-  }
+    }
   },
 
   /**
@@ -111,7 +112,7 @@ export const registrationService = {
   loadRecentEmails() {
     try {
       return JSON.parse(localStorage.getItem('recentEmails') || '[]')
-  } catch (error) {
+    } catch (error) {
       console.error('載入最近郵件失敗：', error)
       return []
     }
@@ -124,5 +125,4 @@ export const registrationService = {
     localStorage.removeItem('registrationFormData')
     localStorage.removeItem('recentEmails')
   }
-} 
 } 
