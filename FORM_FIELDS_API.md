@@ -1,3 +1,5 @@
+touch vite.config.mjs
+
 # 表單欄位管理 API 文檔
 
 ## 概述

@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-import Toast from 'vue-toastification'
-import 'vue-toastification/dist/index.css'
 import './style.css'
 import { useAuthStore } from './stores/auth'
 import './services/axiosConfig'
@@ -16,32 +14,6 @@ if (typeof global === 'undefined') {
 
 // 創建應用實例
 const app = createApp(App)
-
-// 配置 Toast
-const toastOptions = {
-  position: 'top-right',
-  timeout: 3000,
-  closeOnClick: true,
-  pauseOnFocusLoss: true,
-  pauseOnHover: true,
-  draggable: true,
-  draggablePercent: 0.6,
-  showCloseButtonOnHover: false,
-  hideProgressBar: true,
-  closeButton: 'button',
-  icon: true,
-  rtl: false,
-  maxToasts: 3,
-  newestOnTop: true,
-  transition: "Vue-Toastification__bounce",
-  maxToasts: 20,
-  filterBeforeCreate: (toast, toasts) => {
-    if (toasts.filter(t => t.type === toast.type).length !== 0) {
-      return false
-    }
-    return toast
-  }
-}
 
 // 註冊全局錯誤處理器
 app.config.errorHandler = (err, vm, info) => {
@@ -72,7 +44,6 @@ const authStore = useAuthStore()
 authStore.initializeAuth()
 
 // 註冊 Toast
-app.use(Toast, toastOptions)
 
 // 等待 DOM 準備好後再掛載應用
 document.addEventListener('DOMContentLoaded', () => {
