@@ -1,6 +1,5 @@
-import axios from 'axios'
 
-const API_BASE_URL = 'http://localhost:3000/api'
+const API_BASE_URL = '/api'  // 使用相對路徑，讓 axios 處理基礎 URL
 
 export const registrationService = {
   /**
@@ -125,4 +124,5 @@ export const registrationService = {
     localStorage.removeItem('registrationFormData')
     localStorage.removeItem('recentEmails')
   }
+} 
 } 

@@ -89,6 +89,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useToast } from 'vue-toastification'
 import { countdownService } from '../services/countdownService'
+import axios from './axiosConfig'
 
 const route = useRoute()
 const router = useRouter()
@@ -184,22 +185,13 @@ onMounted(async () => {
     loading.value = true
     error.value = null
     
-    const response = await fetch(`http://localhost:3000/api/public/events/${route.params.eventId}`)
+    const response = await axios.get(`/api/public/events/${route.params.eventId}`)
     
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error('找不到此活動')
-      }
+    if (!response.data.success || !response.data.data) {
       throw new Error('無法載入活動資訊')
     }
     
-    const result = await response.json()
-    
-    if (!result.success || !result.data) {
-      throw new Error('無法載入活動資訊')
-    }
-    
-    event.value = result.data
+    event.value = response.data.data
     
     // 同步伺服器時間並啟動倒數計時
     await countdownService.syncServerTime()
@@ -208,13 +200,8 @@ onMounted(async () => {
     // 檢查是否已經報名
     if (authStore.isAuthenticated && event.value) {
       try {
-        const checkResponse = await fetch(`http://localhost:3000/api/registrations/check/${event.value.id}`, {
-          headers: {
-            'Authorization': `Bearer ${authStore.token}`
-          }
-        })
-        const checkResult = await checkResponse.json()
-        isRegistered.value = checkResult.isRegistered
+        const checkResponse = await axios.get(`/api/registrations/check/${event.value.id}`)
+        isRegistered.value = checkResponse.data.isRegistered
       } catch (err) {
         console.error('檢查報名狀態失敗：', err)
       }
