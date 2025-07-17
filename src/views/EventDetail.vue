@@ -1,20 +1,16 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { createPinia } from 'pinia'
-import Toast from 'vue-toastification'
-import 'vue-toastification/dist/index.css'
+<template>
+  <div>
+    <h1>活動詳情頁</h1>
+    <!-- 這裡可以放活動內容、報名資訊等 -->
+  </div>
+</template>
 
-if (import.meta.env.DEV) {
-  // 只在本地開發時自動清除
-  localStorage.removeItem('adminToken')
-  localStorage.removeItem('userToken')
+<script setup>
+// 這裡可以放邏輯，暫時可以留空
+</script>
+
+<style scoped>
+.event-detail {
+  padding: 20px;
 }
-
-const app = createApp(App)
-
-app.use(router)
-app.use(createPinia())
-app.use(Toast)
-
-app.mount('#app')
+</style>
