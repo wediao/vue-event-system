@@ -1,4 +1,4 @@
-import axios from './axiosConfig'
+import axios from '../services/axiosConfig'
 
 const API_BASE_URL = '/api'  // 使用相對路徑，讓 axios 處理基礎 URL
 

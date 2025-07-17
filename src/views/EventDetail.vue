@@ -89,7 +89,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useToast } from 'vue-toastification'
 import { countdownService } from '../services/countdownService'
-import axios from './axiosConfig'
+import axios from '../services/axiosConfig'
 
 const route = useRoute()
 const router = useRouter()
