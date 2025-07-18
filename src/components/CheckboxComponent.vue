@@ -204,28 +204,54 @@ const handleGroupChange = (optionValue) => {
 .checkbox-custom::after {
   content: '';
   position: absolute;
-  top: 0.125rem;
-  left: 0.375rem;
+  top: 50%;
+  left: 50%;
   width: 0.375rem;
   height: 0.625rem;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  transform: translate(-50%, -60%) rotate(45deg);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .checkbox-input:checked + .checkbox-custom {
-  background: var(--primary-color, #4299e1);
-  border-color: var(--primary-color, #4299e1);
+  background: #4299e1;
+  border-color: #4299e1;
 }
 
 .checkbox-input:checked + .checkbox-custom::after {
   opacity: 1;
 }
 
+/* 確保打勾符號正確顯示的備用樣式 */
+.checkbox-input:checked + .checkbox-custom::before {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1;
+  display: none; /* 默認隱藏，當 ::after 不工作時可以啟用 */
+}
+
+/* 如果瀏覽器不支援複雜的 CSS，使用簡單的文字符號 */
+@supports not (transform: rotate(45deg)) {
+  .checkbox-custom::after {
+    display: none;
+  }
+  
+  .checkbox-input:checked + .checkbox-custom::before {
+    display: block;
+  }
+}
+
 .checkbox-input:focus + .checkbox-custom {
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+  outline: none;
 }
 
 .checkbox-text {
@@ -281,10 +307,9 @@ const handleGroupChange = (optionValue) => {
 }
 
 .checkbox-wrapper.size-small .checkbox-custom::after {
-  top: 0.0625rem;
-  left: 0.3125rem;
   width: 0.3125rem;
   height: 0.5rem;
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 .checkbox-wrapper.size-small .checkbox-text {
@@ -297,10 +322,9 @@ const handleGroupChange = (optionValue) => {
 }
 
 .checkbox-wrapper.size-large .checkbox-custom::after {
-  top: 0.1875rem;
-  left: 0.4375rem;
   width: 0.4375rem;
   height: 0.75rem;
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 .checkbox-wrapper.size-large .checkbox-text {
@@ -339,4 +363,4 @@ const handleGroupChange = (optionValue) => {
     height: 1.125rem;
   }
 }
-</style> 
+</style>
