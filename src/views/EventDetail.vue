@@ -141,7 +141,7 @@ onMounted(async () => {
 <style scoped>
 .event-detail {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
 }
 
@@ -283,7 +283,7 @@ onMounted(async () => {
 
 .card-icon {
   font-size: 2.5rem;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -318,7 +318,7 @@ onMounted(async () => {
 }
 
 .register-btn {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 15px 40px;
   border: none;
@@ -328,19 +328,19 @@ onMounted(async () => {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
 .register-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
 .share-btn {
   background: white;
-  color: #FFA500;
+  color: #667eea;
   padding: 15px 40px;
-  border: 2px solid #FFA500;
+  border: 2px solid #667eea;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -349,7 +349,7 @@ onMounted(async () => {
 }
 
 .share-btn:hover {
-  background: #FFA500;
+  background: #667eea;
   color: white;
   transform: translateY(-2px);
 }

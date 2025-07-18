@@ -120,9 +120,9 @@
                 <div class="input-hint">
                   <span class="hint-icon">💡</span>
                   序號格式：TY + 8位以上英數字組合
-          </div>
+                </div>
               </div>
-            <button 
+              <button 
                 @click="verifyCode"
                 :disabled="!registrationCode || isVerifying || eventStatus !== 'active'"
                 class="verify-button"
@@ -132,7 +132,7 @@
               </button>
               
               <!-- 測試按鈕 -->
-            <button 
+              <button 
                 @click="fillTestCode"
                 :disabled="isVerifying"
                 class="test-button"
@@ -1266,18 +1266,21 @@ onUnmounted(() => {
 .verification-card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
 .input-group {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  align-items: center;
+  width: 100%;
 }
 
 .input-wrapper {
   flex: 1;
   position: relative;
+  width: 100%;
 }
 
 .code-input {
@@ -1286,7 +1289,7 @@ onUnmounted(() => {
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 1rem;
-  padding-right: 40px; /* Space for button */
+  box-sizing: border-box;
 }
 
 .code-input:focus {
@@ -1297,13 +1300,16 @@ onUnmounted(() => {
 
 .input-hint {
   position: absolute;
-  bottom: -20px;
+  bottom: -25px;
   left: 0;
   font-size: 0.8rem;
   color: #666;
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: nowrap;
 }
 
 .hint-icon {
@@ -1323,6 +1329,8 @@ onUnmounted(() => {
   gap: 0.5rem;
   font-weight: bold;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .verify-button:disabled {
@@ -1340,7 +1348,8 @@ onUnmounted(() => {
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  margin-left: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .test-button:hover {
@@ -1859,12 +1868,26 @@ onUnmounted(() => {
   .input-group {
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+  }
+  
+  .input-wrapper {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .input-hint {
+    position: static;
+    margin-top: 0.5rem;
+    white-space: normal;
+    word-wrap: break-word;
   }
   
   .verify-button {
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
+    margin-bottom: 0.5rem;
   }
   
   .test-button {
@@ -2081,16 +2104,29 @@ onUnmounted(() => {
   .code-input {
     padding: 0.6rem 0.8rem;
     font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .input-hint {
+    position: static;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    white-space: normal;
+    word-wrap: break-word;
   }
   
   .verify-button {
     padding: 0.8rem;
     font-size: 1rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
   
   .test-button {
     padding: 0.8rem;
     font-size: 1rem;
+    width: 100%;
   }
   
   .verification-tips {
