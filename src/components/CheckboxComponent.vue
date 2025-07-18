@@ -199,6 +199,9 @@ const handleGroupChange = (optionValue) => {
   background: white;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .checkbox-custom::after {
@@ -206,11 +209,11 @@ const handleGroupChange = (optionValue) => {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0.375rem;
-  height: 0.625rem;
+  width: 0.25rem;
+  height: 0.5rem;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: translate(-50%, -60%) rotate(45deg);
+  transform: translate(-50%, -65%) rotate(45deg);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -232,7 +235,7 @@ const handleGroupChange = (optionValue) => {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: bold;
   line-height: 1;
   display: none; /* 默認隱藏，當 ::after 不工作時可以啟用 */
@@ -307,9 +310,9 @@ const handleGroupChange = (optionValue) => {
 }
 
 .checkbox-wrapper.size-small .checkbox-custom::after {
-  width: 0.3125rem;
-  height: 0.5rem;
-  transform: translate(-50%, -60%) rotate(45deg);
+  width: 0.2rem;
+  height: 0.4rem;
+  transform: translate(-50%, -65%) rotate(45deg);
 }
 
 .checkbox-wrapper.size-small .checkbox-text {
@@ -322,9 +325,9 @@ const handleGroupChange = (optionValue) => {
 }
 
 .checkbox-wrapper.size-large .checkbox-custom::after {
-  width: 0.4375rem;
-  height: 0.75rem;
-  transform: translate(-50%, -60%) rotate(45deg);
+  width: 0.3rem;
+  height: 0.6rem;
+  transform: translate(-50%, -65%) rotate(45deg);
 }
 
 .checkbox-wrapper.size-large .checkbox-text {
