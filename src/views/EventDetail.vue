@@ -1,4 +1,3 @@
-
 <template>
   <div class="event-detail">
     <!-- 載入中狀態 -->
@@ -142,7 +141,7 @@ onMounted(async () => {
 <style scoped>
 .event-detail {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   padding: 20px;
 }
 
@@ -199,6 +198,8 @@ onMounted(async () => {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 活動標題區塊 */
@@ -231,7 +232,7 @@ onMounted(async () => {
 }
 
 .event-title {
-  padding: 40px;
+  padding: 30px;
   text-align: center;
 }
 
@@ -240,6 +241,8 @@ onMounted(async () => {
   color: #333;
   margin-bottom: 20px;
   font-weight: 700;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .event-description {
@@ -248,26 +251,30 @@ onMounted(async () => {
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 資訊卡片 */
 .event-info-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
   background: #f8f9fa;
 }
 
 .info-card {
   background: white;
-  padding: 30px;
+  padding: 25px;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   transition: transform 0.3s ease;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .info-card:hover {
@@ -276,10 +283,15 @@ onMounted(async () => {
 
 .card-icon {
   font-size: 2.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
 }
 
 .card-content h3 {
@@ -293,6 +305,8 @@ onMounted(async () => {
   font-size: 1.1rem;
   color: #666;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 操作按鈕 */
@@ -304,7 +318,7 @@ onMounted(async () => {
 }
 
 .register-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   color: white;
   padding: 15px 40px;
   border: none;
@@ -314,19 +328,19 @@ onMounted(async () => {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
 .register-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
 }
 
 .share-btn {
   background: white;
-  color: #667eea;
+  color: #FFA500;
   padding: 15px 40px;
-  border: 2px solid #667eea;
+  border: 2px solid #FFA500;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -335,7 +349,7 @@ onMounted(async () => {
 }
 
 .share-btn:hover {
-  background: #667eea;
+  background: #FFA500;
   color: white;
   transform: translateY(-2px);
 }
