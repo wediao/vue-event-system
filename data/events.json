@@ -13,6 +13,15 @@
     "status": "published"
   },
   {
+    "id": "brothers-20250718",
+    "name": "中信兄弟主場日",
+    "description": "中信兄弟主場日特別活動，包含限量商品、球員見面會等精彩活動！",
+    "capacity": 200,
+    "registrationStartTime": "2025-07-20T10:00:00.000Z",
+    "registrationEndTime": "2025-07-25T18:00:00.000Z",
+    "status": "published"
+  },
+  {
     "id": "0922f08f-0ebc-4081-8a10-5878fc2f36ae",
     "name": " 把你阿嬤賣掉～中元節活動",
     "description": "中元節活動特別活動，包含限量商品、好兄弟見面會等精彩活動！",
