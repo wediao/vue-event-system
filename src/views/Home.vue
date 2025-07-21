@@ -16,7 +16,12 @@
           </div>
         </div>
         <div class="banner-image">
-          <img src="/src/assets/tymetro-logo.svg" alt="桃園機場捷運" class="logo">
+          <CircularLogo 
+            size="xl" 
+            theme="purple" 
+            logo-src="/logo.png" 
+            alt-text="桃園機場捷運"
+          />
         </div>
       </div>
 
@@ -119,6 +124,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import CircularLogo from '../components/CircularLogo.vue'
 
 // 精選活動資料
 const selectedEvent = ref({

@@ -2,7 +2,12 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <router-link to="/" class="logo">
-        <img src="@/assets/tymetro-logo.svg" alt="TYMetro Logo" class="logo-image">
+        <CircularLogo 
+          size="small" 
+          theme="purple" 
+          logo-src="/logo.png" 
+          alt-text="TYMetro Logo"
+        />
         <span class="logo-text">TYMetro</span>
       </router-link>
     </div>
@@ -53,6 +58,7 @@
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
+import CircularLogo from './CircularLogo.vue'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -103,11 +109,7 @@ onUnmounted(() => {
   align-items: center;
   text-decoration: none;
   color: #333;
-}
-
-.logo-image {
-  height: 32px;
-  margin-right: 0.5rem;
+  gap: 0.75rem;
 }
 
 .logo-text {
